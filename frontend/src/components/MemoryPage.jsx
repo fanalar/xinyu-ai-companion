@@ -1,0 +1,15 @@
+import React, { useEffect, useState } from 'react'
+import { api } from '../api.js'
+import Icon from './Icon.jsx'
+export default function MemoryPage({ companion, onRefresh }) {
+  const [memories,setMemories]=useState([]), [query,setQuery]=useState(''), [draft,setDraft]=useState(''), [editing,setEditing]=useState(null), [busy,setBusy]=useState(false), [notice,setNotice]=useState('')
+  const load=()=>api.memories().then(r=>setMemories(r.memories))
+  useEffect(()=>{load().catch(()=>setNotice('记忆暂时未能读取，请重试'))},[companion])
+  const save=async()=>{setBusy(true);setNotice('');try {if(editing!==null) await api.editMemory(editing,draft);else await api.addMemory(draft);await load();setDraft('');setEditing(null);await onRefresh();setNotice('已保存，下次聊天就会用到')}catch(e){setNotice(e.message)}finally{setBusy(false)}}
+  const remove=async(id)=>{if(!confirm('删除这条记忆？聊天记录会保留。'))return;setBusy(true);try{await api.deleteMemory(id);await load();await onRefresh()}catch(e){setNotice(e.message)}finally{setBusy(false)}}
+  const shown=memories.filter(m=>m.content.toLowerCase().includes(query.toLowerCase()))
+  return <div className="memory-page content-page"><header className="page-heading"><div className="eyebrow">一起记住</div><h1>关于我们的那些事</h1><p>这里的记忆属于{companion.name}。你可以补充，也可以纠正。</p></header>
+    <div className="memory-layout"><section className="memory-editor panel"><Icon name="memory" size={28}/><h2>{editing!==null?'修改这条记忆':'留下一件小事'}</h2><p>喜好、习惯、重要约定。具体一点，TA 才能更好地理解你。</p><label className="sr-only" htmlFor="memory-draft">记忆内容</label><textarea id="memory-draft" rows={5} maxLength={500} value={draft} onChange={e=>setDraft(e.target.value)} placeholder="比如：我喜欢安静的咖啡馆，压力大时先听我说，不急着给建议。"/><small>{draft.length} / 500</small><button className="btn" disabled={busy||!draft.trim()} onClick={save}>{editing!==null?'保存修改':'记住这件事'}</button>{editing!==null&&<button className="text-button" onClick={()=>{setEditing(null);setDraft('')}}>取消编辑</button>}<div className="memory-tip">对话中的重要信息会定期整理。自动记忆也可能有误，请在这里查看和修正。</div></section>
+    <section className="memory-library"><div className="library-tools"><h2>{memories.length} 条专属记忆</h2><button className="text-button" onClick={()=>api.exportData().catch(e=>setNotice(e.message))}><Icon name="copy" size={16}/>导出记录</button></div><div className="search-field"><Icon name="search" size={18}/><input aria-label="搜索记忆" value={query} onChange={e=>setQuery(e.target.value)} placeholder="搜索记忆里的关键词"/></div>
+    <div className="memory-grid">{shown.map(m=><article className="memory-card" key={m.id}><small>{new Date(m.ts).toLocaleDateString('zh-CN')} · 与{companion.name}</small><p>{m.content}</p><footer><button disabled={busy} onClick={()=>{setEditing(m.id);setDraft(m.content)}}>编辑</button><button disabled={busy} onClick={()=>remove(m.id)}>删除</button></footer></article>)}</div>{!shown.length&&<div className="empty-state"><Icon name="memory" size={36}/><h3>{query?'没有找到这段记忆':'从一件小事开始'}</h3><p>{query?'试试其他关键词。':'告诉 TA 你的喜好，或把聊天里重要的一句存到这里。'}</p></div>}</section></div>{notice&&<div className="inline-notice" role="status">{notice}</div>}</div>
+}
