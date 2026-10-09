@@ -1,0 +1,9 @@
+fastapi>=0.110,<1
+uvicorn[standard]>=0.29,<1
+httpx>=0.27,<1
+edge-tts>=6.1,<8
+python-multipart>=0.0.9
+av>=12,<17
+numpy>=1.26,<3
+sherpa-onnx==1.13.8
+pyinstaller>=6,<7
