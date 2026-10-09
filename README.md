@@ -1,3 +1,20 @@
+# 完整脱敏源码下载
+
+本项目以 MIT 许可证公开完整源码。**请先下载并解压 [xinyu-ai-companion-sanitized-source.zip](./xinyu-ai-companion-sanitized-source.zip)，再按下方说明运行。**
+
+源码包包含全部 149 个经审查的源码、构建配置、演示素材和许可证文件，不含原 Git 历史、实际密钥、数据库、聊天、录音、签名材料或原私有媒体。模型和运行库按包内脚本另行下载。
+
+网页浏览目录目前正在分批整理，仓库根目录的源码包是完整可用的公开分发版本。请勿直接在尚未整理齐全的网页目录上执行构建。
+
+```powershell
+Expand-Archive ./xinyu-ai-companion-sanitized-source.zip ./source
+cd source
+```
+
+源码包 SHA-256：`462fe57b1a78b1af519e9f0e2a62cc49f9886dcd78ee5abe25cc38727f34012a`。验证边界见解压后的 `docs/VALIDATION.md`；自动化验证不代表真实模型或真机验收。
+
+---
+
 # 心屿 · AI Companion
 
 MIT 开源的中文陪伴原型：Electron + React + FastAPI，桌面源码基于 1.4.1，附安卓 1.3.4 原生/WebView 客户端源码。
@@ -58,3 +75,4 @@ python scripts/android_gradle.py assembleDebug
 原个人内测成绩不是开源版真人准确率保证。本次公开树的构建、离线示例API、静态扫描与安卓源码编译结果见发布说明；真实模型、麦克风及长期会话仍需运行者验证。
 
 项目代码 MIT；Agent-Reach 公开渠道适配保留上游 MIT 通知；sherpa-onnx 为 Apache-2.0，SenseVoice/Silero/ONNX Runtime 等许可见 `docs/third-party`。MIT 不重新许可第三方模型。具体脱敏范围见 `docs/OPEN_SOURCE_SCOPE.md`，安全边界见 `SECURITY.md`。
+
